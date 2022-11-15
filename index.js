@@ -29,6 +29,10 @@ module.exports = (opts, ctx) => {
         "container",
         { type, defaultTitle: false }
       ]),
+      [
+        '@vuepress/plugin-palette',
+        { preset: 'stylus' },
+      ],
     ],
     extendsMarkdown: md => {
       md.use(ghmd)
@@ -37,6 +41,7 @@ module.exports = (opts, ctx) => {
         allowedAttributes: ['prereq', 'hide', 'synopsis']
       })
     },
+    layouts: path.resolve(__dirname, './layouts'),
     clientAppEnhanceFiles: path.resolve(__dirname, 'enhanceApp.js'),
     async onPrepared() {
       // called on build and dev
