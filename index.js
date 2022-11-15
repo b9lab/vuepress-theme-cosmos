@@ -1,6 +1,7 @@
 var ghmd = require("./markdown-it-gh.js");
 var fcb = require("./markdown-it-fcb.js");
 const AssetsOptimizer = require("./utils/AssetsOptimizer");
+const { path } = require('@vuepress/shared-utils');
 
 function replaceUnsafeChar(ch) {
   return HTML_REPLACEMENTS[ch];
@@ -29,14 +30,15 @@ module.exports = (opts, ctx) => {
         { type, defaultTitle: false }
       ]),
     ],
-    extendMarkdown: md => {
+    extendsMarkdown: md => {
       md.use(ghmd)
       md.use(fcb)
       md.use(require('markdown-it-attrs'), {
         allowedAttributes: ['prereq', 'hide', 'synopsis']
       })
     },
-    async ready() {
+    clientAppEnhanceFiles: path.resolve(__dirname, 'enhanceApp.js'),
+    async onPrepared() {
       // called on build and dev
       const assetsOptimizer = new AssetsOptimizer(opts.assetsOptimization.breakpoints || [], opts.assetsOptimization.blacklist || []);
       assetsOptimizer.optimize();
