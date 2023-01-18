@@ -40,7 +40,7 @@
                 window.location.href = window.location.origin + versionPart + pathPart;
             },
             getCurrentVersion() {
-                if (!window) return "master";
+                if (typeof window == 'undefined') return "master";
                 const path = window?.location?.pathname?.split('/') || null;
 
                 let version = "master";
