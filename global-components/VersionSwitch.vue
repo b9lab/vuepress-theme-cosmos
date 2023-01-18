@@ -38,7 +38,7 @@
                 window.location.href = window.location.origin + versionPart + pathPart;
             },
             getCurrentVersion() {
-                const path = this.$route.path?.split('/') || null;
+                const path = window?.location?.pathname?.split('/') || null;
 
                 let version = "master";
 
