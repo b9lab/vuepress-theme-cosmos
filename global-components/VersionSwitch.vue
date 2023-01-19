@@ -7,7 +7,7 @@
         .versions__content(v-if="showContent")
             .versions__item(v-for="version in versionsItems")
                 .versions__item__link(@click="changeVersion(version)") {{version}}
-    .versions__banner(v-if="currentVersion != 'master'" @click="changeVersion('master')") You are viewing an older version of the content, click here to switch to the current version
+    .versions__banner.tm-rf-1(v-if="currentVersion != 'master'" @click="changeVersion('master')") You are viewing an older version of the content, click here to switch to the current version
 </template>
 
 <script>
@@ -40,10 +40,6 @@
                 window.location.href = window.location.origin + versionPart + pathPart;
             },
             getCurrentVersion() {
-                console.log(this.$site?.base)
-                // if (typeof window == 'undefined') return "master";
-                // const path = window?.location?.pathname?.split('/') || null;
-
                 let version = "master";
 
                 if (this.$site?.base) {
@@ -80,6 +76,7 @@
             padding-inline var(--spacing-4)
             padding-block var(--spacing-2)
             cursor pointer
+            z-index 99
 
         &__item
             cursor pointer
@@ -123,4 +120,20 @@
                     -webkit-transform rotate(0deg)
                     -ms-transform rotate(0deg)
                     transition transform 0.2s linear
+
+    @media screen and (max-width: 480px)
+        .versions
+            &__wrapper
+                position absolute
+                z-index 9999
+                top 10rem
+                left 0
+
+            &__banner
+                top 10rem
+                right 24px
+                width 70%
+                left auto
+                transform none
+
 </style>
