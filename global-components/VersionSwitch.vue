@@ -40,13 +40,14 @@
                 window.location.href = window.location.origin + versionPart + pathPart;
             },
             getCurrentVersion() {
-                if (typeof window == 'undefined') return "master";
-                const path = window?.location?.pathname?.split('/') || null;
+                console.log(this.$site?.base)
+                // if (typeof window == 'undefined') return "master";
+                // const path = window?.location?.pathname?.split('/') || null;
 
                 let version = "master";
 
-                if (path && path.length > 0) {
-                    const matched = this.versions.find(item => item === path[1]) || null;
+                if (this.$site?.base) {
+                    const matched = this.versions.find(item => `/${item}/` === this.$site.base) || null;
                     if (matched) version = matched;
                 }
 
