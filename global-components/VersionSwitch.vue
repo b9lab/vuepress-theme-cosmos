@@ -42,7 +42,7 @@
                 window.location.href = window.location.origin + versionPart + pathPart;
             },
             navigateToVersionsPage() {
-                window.location.href = window.location.origin + "/versions";
+                window.location.href = window.location.origin + "/versions.html";
             },
             getCurrentVersion() {
                 let version = "master";
