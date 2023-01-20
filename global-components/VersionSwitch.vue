@@ -117,6 +117,7 @@
                 width max-content
 
             &__question
+                height 0.8rem
                 width 1rem
                 height 1rem
                 fill #aaa
@@ -125,6 +126,10 @@
 
                 &:hover
                     fill var(--color-text, black)
+
+                svg
+                    height 100%
+                    
 
             &__icon
                 width 15px
