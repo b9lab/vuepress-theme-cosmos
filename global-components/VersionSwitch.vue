@@ -119,7 +119,6 @@
             &__question
                 height 0.8rem
                 width 1rem
-                height 1rem
                 fill #aaa
                 transition fill .15s ease-out
                 margin-left var(--spacing-6)
